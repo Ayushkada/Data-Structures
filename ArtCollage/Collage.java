@@ -40,7 +40,6 @@ public class Collage {
      */
     public Collage (String filename) {
         
-        // WRITE YOUR CODE HERE
         this.collageDimension = 4;
         this.tileDimension = 150;
 
@@ -50,8 +49,6 @@ public class Collage {
         collagePicture = new Picture(height, height);
 
         scale(height, height, originalPicture, collagePicture);
-
-       
     }
 
     /*
@@ -65,8 +62,6 @@ public class Collage {
      * @param filename the image filename
      */    
     public Collage (String filename, int td, int cd) {
-
-        // WRITE YOUR CODE HERE
         this.collageDimension = cd;
         this.tileDimension = td;
         originalPicture = new Picture(filename);
@@ -85,8 +80,6 @@ public class Collage {
      * @param target is the 
      */
     public static void scale (int Width, int Height, Picture source, Picture target) {
-
-        // WRITE YOUR CODE HERE
         for (int tcol = 0; tcol < Width; tcol++) {
             for (int trow = 0; trow < Height; trow++)
             {
@@ -149,7 +142,7 @@ public class Collage {
      * Assumes that collage has been initialized
      */    
     public void showCollagePicture() {
-	    collagePicture.show();
+	collagePicture.show();
     }
 
     /*
@@ -158,8 +151,6 @@ public class Collage {
      * where each tile has tileDimension X tileDimension pixels.
      */    
     public void makeCollage () {
-
-        // WRITE YOUR CODE HERE
         Picture scaledOriginal = new Picture(tileDimension, tileDimension);
         scale(tileDimension, tileDimension, originalPicture, scaledOriginal);
                             
@@ -172,8 +163,10 @@ public class Collage {
         
                         Color color = scaledOriginal.get(k, l);
                         collagePicture.set(k+(j*tileDimension), l+(i*tileDimension), color);
-            }
-        }}}
+           	    }
+        	}
+	    }
+	}
     }
 
     /*
@@ -186,8 +179,6 @@ public class Collage {
      * @param collageRow tile row
      */
     public void colorizeTile (String component,  int collageCol, int collageRow) {
-
-        // WRITE YOUR CODE HERE
         for( int i = 0; i < collagePicture.height()/tileDimension; i++) {
             for (int j = 0; j < collagePicture.height()/tileDimension; j++) {
                 if ( j == collageCol && i == collageRow ) {
@@ -199,15 +190,15 @@ public class Collage {
                             int r = color.getRed();
                             int g = color.getGreen();
                             int b = color.getBlue();
-                                if(component.equals("red")) {
-                                    collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(r, 0, 0));
-                                }
-                                else if(component.equals("green")) {
-                                    collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(0, g, 0));
-                                }
-                                else if(component.equals("blue")){
-                                    collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(0, 0, b));
-                                }
+			    if(component.equals("red")) {
+			    	collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(r, 0, 0));
+			    }
+			    else if(component.equals("green")) {
+			    	collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(0, g, 0));
+			    }
+			    else if(component.equals("blue")){
+			    	collagePicture.set(pixelCol + (tileDimension * j), pixelRow + (tileDimension * i), new Color(0, 0, b));
+			    }
                         }
                     }
                 }
@@ -224,8 +215,6 @@ public class Collage {
      * @param collageRow tile row
      */
     public void replaceTile (String filename, int collageCol, int collageRow) {
-
-        // WRITE YOUR CODE HERE
         Picture replacement = new Picture(filename); 
         Picture scaledReplacement = new Picture( tileDimension, tileDimension );
         scale(tileDimension, tileDimension, replacement, scaledReplacement);
@@ -242,8 +231,9 @@ public class Collage {
                         }
                     }   
                 }
-            }}
-        }
+            }
+	 }
+     }
 
     /*
      * Grayscale tile at (collageCol, collageRow)
@@ -252,8 +242,6 @@ public class Collage {
      * @param collageRow tile row
      */
     public void grayscaleTile (int collageCol, int collageRow) {
-
-        // WRITE YOUR CODE HERE
         for( int i = 0; i < collagePicture.height()/tileDimension; i++) {
             for (int j = 0; j < collagePicture.height()/tileDimension; j++) {
                 if ( j == collageCol && i == collageRow ) {
